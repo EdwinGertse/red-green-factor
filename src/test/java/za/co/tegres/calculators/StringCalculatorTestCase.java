@@ -38,4 +38,10 @@ public class StringCalculatorTestCase {
         int sum = calculator.Add("1\n2,3");
         assertThat(sum, is(6));
     }
+
+    @Test
+    public void givenMultipleDelimitersWhenAddReturnSum() {
+        int sum = calculator.Add("//;\\n1;2");
+        assertThat(sum, is(3));
+    }
 }
