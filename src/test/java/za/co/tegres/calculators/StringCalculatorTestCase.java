@@ -62,4 +62,10 @@ public class StringCalculatorTestCase {
         int sum = calculator.Add("2+1001");
         assertThat(sum, is(2));
     }
+
+    @Test
+    public void givenAnyNumberOfDelimitersWhenAddReturnSum(){
+        int sum = calculator.Add("//[***]\\n1***2***1003");
+        assertThat(sum, is(3));
+    }
 }
