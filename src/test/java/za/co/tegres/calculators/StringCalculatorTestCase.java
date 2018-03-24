@@ -2,6 +2,8 @@ package za.co.tegres.calculators;
 
 import org.junit.Before;
 import org.junit.Test;
+import za.co.tegres.calculators.exceptions.NegativeNumberNotSupportedException;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
@@ -48,10 +50,10 @@ public class StringCalculatorTestCase {
     @Test
     public void givenNegativeNumberWhenAddReturnException() {
         try {
-            calculator.Add("-2");
+            calculator.Add("-2,-3");
             fail();
         } catch (NegativeNumberNotSupportedException e) {
-            assertEquals("negatives not allowed [-2]", e.getMessage());
+            assertEquals("negatives not allowed [-2, -3]", e.getMessage());
         }
     }
 }
