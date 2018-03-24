@@ -44,4 +44,14 @@ public class StringCalculatorTestCase {
         int sum = calculator.Add("//;\\n1;2");
         assertThat(sum, is(3));
     }
+
+    @Test
+    public void givenNegativeNumberWhenAddReturnException() {
+        try {
+            calculator.Add("-2");
+            fail();
+        } catch (NegativeNumberNotSupportedException e) {
+            assertEquals("negatives not allowed [-2]", e.getMessage());
+        }
+    }
 }
