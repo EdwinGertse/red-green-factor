@@ -33,4 +33,9 @@ public class StringCalculatorTestCase {
         assertThat(sum, is(3));
     }
 
+    @Test
+    public void givenNewLineWhenAddReturnSum() {
+        int sum = calculator.Add("1\n2,3");
+        assertThat(sum, is(6));
+    }
 }
