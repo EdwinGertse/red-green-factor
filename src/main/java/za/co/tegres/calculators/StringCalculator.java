@@ -3,12 +3,15 @@ package za.co.tegres.calculators;
 public class StringCalculator {
 
     public int Add(String numbers) {
-        int sum = 0;
-        if(isEmpty(numbers)) return sum;
-        return sum;
+        if(isEmpty(numbers)) return 0;
+        return calcSum(numbers);
     }
 
     private boolean isEmpty(String str) {
         return (str == null || str.trim().isEmpty());
+    }
+
+    public int calcSum(String number) {
+        return Integer.valueOf(number);
     }
 }
