@@ -26,4 +26,11 @@ public class StringCalculatorTestCase {
         int sum = calculator.Add("1");
         assertThat(sum, is(1));
     }
+
+    @Test
+    public void givenMultipleNumbersWhenAddReturnSum() {
+        int sum = calculator.Add("1,2");
+        assertThat(sum, is(3));
+    }
+
 }
