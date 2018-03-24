@@ -7,13 +7,17 @@ import java.util.Collection;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
+
+    private static final int HIGHEST_NUMBER = 1000;
 
     public int Add(String numbers) {
         if(isEmpty(numbers)) return 0;
         List<Integer> extractedNumbers = extractNumbers(numbers);
         hasNegativeNumbers(extractedNumbers);
+        extractedNumbers = ignoreInvalidNumbers(extractedNumbers);
         return calcSum(extractedNumbers);
     }
 
@@ -22,7 +26,7 @@ public class StringCalculator {
     }
 
     private boolean isEmpty(Collection collection) {
-        return collection == null && collection.isEmpty();
+        return collection == null || collection.isEmpty();
     }
 
     public List<Integer> extractNumbers(String numbers) {
@@ -44,6 +48,10 @@ public class StringCalculator {
         }
         if(!isEmpty(negatives))
             throw new NegativeNumberNotSupportedException(negatives);
+    }
+
+    public List<Integer> ignoreInvalidNumbers(List<Integer> numbers) {
+        return numbers.stream().filter(i -> i <= HIGHEST_NUMBER).collect(Collectors.toList());
     }
 
     public int calcSum(List<Integer> numbers) {

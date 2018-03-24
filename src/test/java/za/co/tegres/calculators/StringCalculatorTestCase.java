@@ -56,4 +56,10 @@ public class StringCalculatorTestCase {
             assertEquals("negatives not allowed [-2, -3]", e.getMessage());
         }
     }
+
+    @Test
+    public void givenNumberLargerThanThousandWhenAddReturnSumMinusLargeNumber() {
+        int sum = calculator.Add("2+1001");
+        assertThat(sum, is(2));
+    }
 }
